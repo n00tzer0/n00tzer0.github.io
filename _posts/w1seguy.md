@@ -1,0 +1,37 @@
+---
+title: W1seGuy
+date: 2024-08-09 +0800
+categories: [writeup, cryptography, tryhackme]
+tags: [tryhackme]     # TAG names should always be lowercase
+description: Write up for W1seGuy room on TryHackMe
+author: piotr
+---
+
+# This is a cryptography challenge
+
+Looking at the challenge we can see that we have access to a python file that we can download. Here we can see how the server operates.
+
+## First flag
+After starting the challenge server we can see that the server gives a long hex message and ask for the encryption key of it.
+
+![alt text](/assets/lib/w1seguy/xor.png)
+_Server Prompt_
+
+In the python file we can see the process how this flag 1 is encoded:
+
+![alt text](/assets/lib/w1seguy/code.png)
+_Snippet of the code_
+
+As you can look how the key is created you can see that it is randomly chosen from ascii_letters and digits with total length of 5 characters. So then our next step would be to brute force this key.
+
+This can be achieved with https://www.dcode.fr/xor-cipher. 
+Or at least partial recovery, as we know that the key has to start with "THM{" string.
+This gets us the first flag of the challenge.
+
+## Second flag
+By getting a readable flag we can also get the key from dcode site. However, it's in hex coded so we have to convert to ASCII characters using for example: https://gchq.github.io/CyberChef/
+
+Then input the ASCII key into the terminal and receive the flag 2:
+
+![alt text](/assets/lib/w1seguy/flag2.png)
+_Full interaction_
