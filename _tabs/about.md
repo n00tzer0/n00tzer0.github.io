@@ -4,4 +4,4 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-Piotr Kulpinski Student and cybersecurity enthusiast
+Student and cybersecurity enthusiast
